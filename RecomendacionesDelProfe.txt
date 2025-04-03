@@ -1,5 +1,0 @@
-Recomendaciones del profe:
-*A la hora de crear un script:
- *NUNCA usar espacios a la hora de nombrar un script.
- *Escribir nombre de script en Pascal (MyFirstScript.)
- *NO utilziar caracteres especiales (tildes, dieresis, emojis, etc.)
