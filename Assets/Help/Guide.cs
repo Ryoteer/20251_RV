@@ -9,7 +9,10 @@
 
 //MÉTODOS:
 // *Es código encapsulado que cumple un cierto propósito o función. Creamos un método indicando:
-// void NombreDeMetodo() { entre las llaves va el código a ejecutar al llamar al método. }
+// void NombreDeMetodo()
+// {
+//      entre las llaves va el código a ejecutar al llamar al método.
+// }
 
 //MÉTODOS DE UNITY:
 //  *Unity ya tiene métodos predefinidos que se ejecutarán automáticamente cuando asignemos un script dentro de un objeto en escena.
@@ -54,6 +57,8 @@
 //   *A) Asignarla por inspector en el caso de que la variables sea pública.
 //   *B) En el método Awake/Start, utilizamos el GetComponent indicando el tipo de componente deseado (_rb = GetComponent<Rigidbody>();)
 
+//ESTRUCTURA IF/ELSE IF/ELSE
+
 //INPUTS Y AXIS: Unity trae un sistema de inputs por default que nos permitirá recibir un valor positivo/negativo para utilizar como necesitemos.
 //  *Input.GetAxis("eje") = este es el método que utilizamos para conseguir el eje. Entre las comillas determinamos qué eje queremos utilizar para recibir
 //  valores.
@@ -64,4 +69,4 @@
 //  GetKeyDown lo consigue al apretarse la tecla (un solo frame), GetKeyUp al soltarse (un solo frame) y GetKey mientras la tecla se mantega apretada (varios frames.)
 //  Entre los paréntesis indicamos cuál es la tecla por la que estamos preguntando (KeyCode.Tecla).
 
-//RIGIDBODY = Es el componente que asignamos a un objeto dentro de la escena que nos permitirá utilizar el sistema de físicas de Unity.
+//RIGIDBODY: Es el componente que asignamos a un objeto dentro de la escena que nos permitirá utilizar el sistema de físicas de Unity.
