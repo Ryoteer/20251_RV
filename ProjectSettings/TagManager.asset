@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Character
   - Water
   - UI
   - 
@@ -34,9 +34,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Interact
+  - Wall
+  - Ground
   m_SortingLayers:
   - name: Default
     uniqueID: 0
