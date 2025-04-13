@@ -7,6 +7,7 @@ public class ThirdPersonCharacter : MonoBehaviour
 {
     [Header("<color=#997570>Animator</color>")]
     [SerializeField] private string _airBoolName = "isOnAir"; 
+    [SerializeField] private string _interactTriggerName = "onInteract"; 
     [SerializeField] private string _jumpTriggerName = "onJump"; 
     [SerializeField] private string _xFloatName = "xAxis"; 
     [SerializeField] private string _zFloatName = "zAxis";
@@ -87,6 +88,7 @@ public class ThirdPersonCharacter : MonoBehaviour
         {
             if (_interactHit.collider.TryGetComponent(out IInteractable inter))
             {
+                _animator.SetTrigger(_interactTriggerName);
                 inter.OnInteract();
             }
         }
