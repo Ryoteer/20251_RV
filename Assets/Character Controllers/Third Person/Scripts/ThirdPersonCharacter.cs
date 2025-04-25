@@ -15,6 +15,7 @@ public class ThirdPersonCharacter : MonoBehaviour
     [Header("<color=#997570>Inputs</color>")]
     [SerializeField] private KeyCode _interactKey = KeyCode.F;
     [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode _tpKey = KeyCode.T;
 
     [Header("<color=#997570>Movement</color>")]
     [SerializeField] private float _jumpForce = 7.5f;
@@ -28,6 +29,7 @@ public class ThirdPersonCharacter : MonoBehaviour
     [SerializeField] private LayerMask _interactMask;
 
     private Vector3 _dir = new(), _dirFix = new(), _cameraForwardFix = new(), _cameraRightFix = new(), _groundOffset = new();
+    private Vector3 _spawnPoint = new();
 
     private Animator _animator;
     private Rigidbody _rb;
@@ -45,6 +47,8 @@ public class ThirdPersonCharacter : MonoBehaviour
 
     private void Start()
     {
+        _spawnPoint = transform.position;
+
         _animator = GetComponentInChildren<Animator>();
 
         _cameraTransform = Camera.main.transform;
@@ -61,6 +65,10 @@ public class ThirdPersonCharacter : MonoBehaviour
         if (Input.GetKeyDown(_interactKey))
         {
             Interaction();
+        }
+        else if (Input.GetKeyDown(_tpKey))
+        {
+            Teleport(_spawnPoint);
         }
 
         _animator.SetBool(_airBoolName, IsOnAir());
@@ -86,8 +94,12 @@ public class ThirdPersonCharacter : MonoBehaviour
 
         if (Physics.SphereCast(_interactRay, _interactRadius, out _interactHit, _interactDistance, _interactMask))
         {
+            Debug.Log($"Collided with {_interactHit.collider.name}.");
+
             if (_interactHit.collider.TryGetComponent(out IInteractable inter))
             {
+                Debug.Log($"{_interactHit.collider.name}: valid interaction.");
+
                 _animator.SetTrigger(_interactTriggerName);
                 inter.OnInteract();
             }
@@ -126,5 +138,10 @@ public class ThirdPersonCharacter : MonoBehaviour
     private void Rotate(Vector3 dir)
     {
         transform.forward = dir;
+    }
+
+    public void Teleport(Vector3 destination)
+    {
+        transform.position = destination;
     }
 }

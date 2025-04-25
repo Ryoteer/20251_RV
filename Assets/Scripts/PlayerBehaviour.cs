@@ -24,8 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Vector3 _dir = Vector3.zero, _posOffset = Vector3.zero;
 
-    private Rigidbody _rb;
     private Animator _animator;
+    private Rigidbody _rb;
 
     private Ray _groundRay, _interactRay;
     private RaycastHit _interactHit;
@@ -57,6 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Interact();
         }
+        
     }
 
     private void FixedUpdate()
@@ -74,8 +75,6 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (_interactHit.collider.TryGetComponent(out IInteract interact))
             {
-                Debug.Log($"Interacting with {_interactHit.collider.name}.");
-
                 interact.OnInteract();
             }
         }
