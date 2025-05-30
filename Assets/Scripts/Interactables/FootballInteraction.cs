@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FootballInteraction : MonoBehaviour, IInteractable
 {
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _particle;
+
     private Animation _animation;
 
     private void Start()
@@ -19,6 +22,7 @@ public class FootballInteraction : MonoBehaviour, IInteractable
         }
 
         _animation.clip = _animation.GetClip("Bounce");
+        _particle.Play();
         _animation.Play();
     }
 }

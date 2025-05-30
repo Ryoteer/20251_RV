@@ -37,8 +37,12 @@ public class AudioManager : MonoBehaviour
     [Range(0.0001f, 1.0f)][SerializeField] private float _uiGroupInitVal = 1.0f;
     public float UIGroupInitVal { get { return _uiGroupInitVal; } }
 
+    private AudioSource _musicSource;
+
     private void Start()
     {
+        _musicSource = GetComponent<AudioSource>();
+
         SetMasterVolume(_masterGroupInitVal);
         SetMusicVolume(_musicGroupInitVal);
         SetSFXVolume(_sfxGroupInitVal);
@@ -71,5 +75,17 @@ public class AudioManager : MonoBehaviour
         if (value <= 0.0f) { value = 0.0001f; }
 
         _mixer.SetFloat(_uiGroupName, Mathf.Log10(value) * 20.0f);
+    }
+
+    public void PlayMusicClip(AudioClip clip)
+    {
+        if (_musicSource.isPlaying)
+        {
+            _musicSource.Stop();
+        }
+
+        _musicSource.clip = clip;
+
+        _musicSource.Play();
     }
 }
